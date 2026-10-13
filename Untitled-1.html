@@ -1,0 +1,165 @@
+<style>
+        /* Estilos generales */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+        }
+
+        /* Selector de CLASE para el formulario */
+        .formulario {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .campo {
+            margin-bottom: 1.2rem;
+        }
+
+        .campo input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .campo input:focus {
+            outline: none;
+            border-color: #3498db;
+            background-color: #f8fbfe;
+        }
+
+        .boton-enviar {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 0.9rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .boton-enviar:hover {
+            background-color: #1f6196;
+        }
+
+        /* Selector de ID para el contenedor de resultados */
+        #resultado {
+            background-color: #e8f5e9;
+            border: 2px solid #27ae60;
+            border-radius: 10px;
+            padding: 1.5rem;
+            color: #2d6a4f;
+            line-height: 1.6;
+            display: none; /* Oculto hasta que se envíen datos */
+        }
+
+        #resultado h3 {
+            margin-bottom: 1rem;
+            color: #1b5e20;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Formulario de Registro</h1>
+
+    <!-- Formulario con 4 campos de entrada -->
+    <form class="formulario">
+        <div class="campo">
+            <input 
+                type="text" 
+                id="nombre" 
+                class="entrada-dato" 
+                placeholder="Ingresa tu nombre completo" 
+                required
+            >
+        </div>
+
+        <div class="campo">
+            <input 
+                type="email" 
+                id="correo" 
+                class="entrada-dato" 
+                placeholder="ejemplo@correo.com" 
+                required
+            >
+        </div>
+
+        <div class="campo">
+            <input 
+                type="number" 
+                id="edad" 
+                class="entrada-dato" 
+                placeholder="Ingresa tu edad" 
+                required
+            >
+        </div>
+
+        <div class="campo">
+            <input 
+                type="text" 
+                id="ciudad" 
+                class="entrada-dato" 
+                placeholder="¿En qué ciudad vives?" 
+                required
+            >
+        </div>
+
+        <!-- Botón con evento onclick -->
+        <button type="button" class="boton-enviar" onclick="capturarDatos()">
+            Enviar Datos
+        </button>
+    </form>
+
+    <!-- Contenedor de resultados -->
+    <div id="resultado"></div>
+
+    <script>
+        // Función que captura y muestra los datos
+        function capturarDatos() {
+            // 1. Leer cada valor usando su id con getElementById
+            const nombre = document.getElementById('nombre').value;
+            const correo = document.getElementById('correo').value;
+            const edad = document.getElementById('edad').value;
+            const ciudad = document.getElementById('ciudad').value;
+
+            // 2. Obtener el contenedor de resultados
+            const cajaResultado = document.getElementById('resultado');
+
+            // 3. Escribir el mensaje con los datos recopilados
+            cajaResultado.innerHTML = `
+                <h3>✅ Datos capturados con éxito</h3>
+                <p><strong>Nombre:</strong> ${nombre}</p>
+                <p><strong>Correo:</strong> ${correo}</p>
+                <p><strong>Edad:</strong> ${edad} años</p>
+                <p><strong>Ciudad:</strong> ${ciudad}</p>
+            `;
+
+            // 4. Mostrar el contenedor
+            cajaResultado.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
